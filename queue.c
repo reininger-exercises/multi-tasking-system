@@ -1,10 +1,10 @@
 /*
- * Priority queue functions for Proc.
+ * Priority queue data structure for Proc.
  */
 #include "queue.h"
 
 /*
- * Insert Proc p into priority queue of Proc's.
+ * Insert Proc process into priority queue of Proc's.
  */
 void Enqueue(Proc **queue, Proc *process)
 {
@@ -30,6 +30,7 @@ Proc *Dequeue(Proc **queue)
 	Proc *proc = *queue;
 	if (proc) {
 		*queue = (*queue)->next;
+		proc->next = NULL;
 	}
 	return proc;
 }
@@ -39,7 +40,7 @@ Proc *Dequeue(Proc **queue)
  */
 void PrintList(char *name, Proc *process)
 {
-	printf("%s = ", name);
+	printf("%s [pid, priority] = ", name);
 	while(process) {
 		printf("[%d %d]->", process->pid, process->priority);
 		process = process->next;
