@@ -31,6 +31,11 @@ typedef struct proc {
 	int ppid; // parent process pid
 	ProcStatus status; // Proc status = FREE|READY, etc
 	int priority; // scheduling priority, higher priority more important
+	int event; // event value to sleep on
+	int exitCode; // exit value
+	struct proc *child; // first child pointer
+	struct proc *sibling; 
+	struct proc *parent;
 	int kstack[SSIZE]; // process execution stack
 } Proc;
 
