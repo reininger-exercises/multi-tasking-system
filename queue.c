@@ -38,11 +38,12 @@ Proc *Dequeue(Proc **queue)
 /*
  * Print process list.
  */
+char* statusNames[] = {"FREE", "READY", "SLEEP", "ZOMBIE"};
 void PrintList(char *name, Proc *process)
 {
-	printf("%s [pid, priority] = ", name);
+	printf("%s [pid, status] = ", name);
 	while(process) {
-		printf("[%d %d]->", process->pid, process->priority);
+		printf("[%d %s]->", process->pid, statusNames[process->status]);
 		process = process->next;
 	}
 	printf("NULL\n");
