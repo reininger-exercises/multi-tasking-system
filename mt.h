@@ -24,10 +24,16 @@ void init();
 int do_kfork();
 void do_switch();
 void do_exit();
+void do_wait();
 void body();
 int kfork();
 void kexit();
 void Scheduler();
+int kwait(int*);
+void ksleep(int);
+void kwakeup(int);
+void PrintChildren(Proc *proc);
+
 
 // defined in ts.s
 void tswitch();
